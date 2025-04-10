@@ -7,24 +7,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
         body {
-            background-color: #e6f0fa; /* 연한 블루-화이트 배경 유지 */
+            background-color: #e6f0fa;
         }
 
         /* 헤더 스타일 */
         header {
-            background: linear-gradient(90deg, #6b9bff, #40c4ff); /* 조금 더 진한 블루 그라디언트 */
-            padding: 1rem 0;
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: 60px; /* 고정된 높이 유지 */
         }
 
         .navbar {
@@ -33,6 +33,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
+            position: relative;
+            height: 100%; /* 헤더 높이에 맞춤 */
         }
 
         .logo {
@@ -40,16 +43,14 @@
             font-size: 1.8rem;
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease;
         }
 
         .nav-menu {
             list-style: none;
             display: flex;
             gap: 2rem;
-        }
-
-        .nav-item {
-            position: relative;
+            transition: opacity 0.3s ease;
         }
 
         .nav-item a {
@@ -60,39 +61,70 @@
         }
 
         .nav-item a:hover {
-            color: #fff3cd; /* 부드러운 크림색으로 hover 효과 유지 */
+            color: #fff3cd;
         }
 
-        /* 드롭다운 메뉴 스타일 */
-        .dropdown-menu {
-            display: none;
+        /* 슬라이드 다운 메뉴 스타일 */
+        .menu-container {
             position: absolute;
             top: 100%;
             left: 0;
+            width: 100%;
             background-color: #ffffff;
-            list-style: none;
-            min-width: 150px;
-            border-radius: 8px;
+            border-radius: 0 0 8px 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border: 1px solid #b3e5fc;
+            display: none;
+            padding: 1rem;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 99;
+            display: flex;
+            justify-content: space-between;
         }
 
-        .dropdown:hover .dropdown-menu {
-            display: block;
+        /* 마우스 오버 시 메뉴 표시 및 상단 요소 숨김 */
+        header:hover .menu-container {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
         }
 
-        .dropdown-menu li {
-            padding: 0.7rem 1rem;
+        header:hover .logo,
+        header:hover .nav-menu {
+            opacity: 0;
         }
 
-        .dropdown-menu li a {
+        .menu-section {
+            flex: 1;
+            padding: 0 1rem;
+            min-height: 150px; /* 최소 높이 유지 */
+        }
+
+        .menu-section h4 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-section ul {
+            list-style: none;
+        }
+
+        .menu-section li {
+            padding: 0.5rem 0;
+        }
+
+        .menu-section li a {
             color: #2c3e50;
             font-size: 0.9rem;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .dropdown-menu li a:hover {
-            color: #6b9bff; /* 조금 더 진한 블루로 hover 효과 */
+        .menu-section li a:hover {
+            color: #6b9bff;
         }
 
         /* 메인 섹션 스타일 */
@@ -242,7 +274,7 @@
         .ad-box p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
-            color : black;
+            color: black;
         }
     </style>
 </head>
@@ -253,39 +285,52 @@
             <div class="logo">레시피 공유 웹</div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html">홈</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#">레시피</a>
-                    <ul class="dropdown-menu">
+                <li class="nav-item"><a href="#">레시피</a></li>
+                <li class="nav-item"><a href="#">커뮤니티</a></li>
+                <li class="nav-item"><a href="#">FAQ</a></li>
+                <li class="nav-item"><a href="#">마이페이지</a></li>
+            </ul>
+            <!-- 통합된 슬라이드 다운 메뉴 -->
+            <div class="menu-container">
+                <div class="menu-section">
+                    <h4>레시피</h4>
+                    <ul>
                         <li><a href="#">레시피 모음</a></li>
                         <li><a href="#">식재료 정보</a></li>
                         <li><a href="#">조합 레시피</a></li>
                     </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#">커뮤니티</a>
-                    <ul class="dropdown-menu">
+                </div>
+                <div class="menu-section">
+                    <h4>커뮤니티</h4>
+                    <ul>
                         <li><a href="#">최신 질문</a></li>
                         <li><a href="#">인기 질문</a></li>
                         <li><a href="#">질문 작성</a></li>
                         <li><a href="#">나만의 레시피</a></li>
                     </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#">FAQ</a>
-                    <ul class="dropdown-menu">
+                </div>
+                <div class="menu-section">
+                    <h4>FAQ</h4>
+                    <ul>
                         <li><a href="#">요리 Q&A</a></li>
                         <li><a href="#">기본 팁</a></li>
                         <li><a href="#">사이트 이용법</a></li>
                     </ul>
-                </li>
-                <li class="nav-item"><a href="#">마이페이지</a></li>
-            </ul>
+                </div>
+                <div class="menu-section">
+                    <h4>마이페이지</h4>
+                    <ul>
+                        <li><a href="#">프로필</a></li>
+                        <li><a href="#">내 레시피</a></li>
+                        <li><a href="#">설정</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
     <!-- 메인 섹션 -->
     <main>
-        <!-- 오늘의 레시피 -->
         <section class="today-recipe">
             <h2>오늘의 레시피</h2>
             <div class="recipe-card">
@@ -296,7 +341,6 @@
             </div>
         </section>
 
-        <!-- 인기 질문 -->
         <section class="popular-questions">
             <h2>인기 질문</h2>
             <ul class="question-list">
@@ -324,7 +368,5 @@
             <a href="#" class="btn">지금 공유하기</a>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
