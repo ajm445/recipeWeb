@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피 공유 웹 - 홈</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        body {
+            background-color: #e6f0fa; /* 연한 블루-화이트 배경 유지 */
+        }
+
+        /* 헤더 스타일 */
+        header {
+            background: linear-gradient(90deg, #6b9bff, #40c4ff); /* 조금 더 진한 블루 그라디언트 */
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item a:hover {
+            color: #fff3cd; /* 부드러운 크림색으로 hover 효과 유지 */
+        }
+
+        /* 드롭다운 메뉴 스타일 */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            list-style: none;
+            min-width: 150px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #b3e5fc;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            padding: 0.7rem 1rem;
+        }
+
+        .dropdown-menu li a {
+            color: #2c3e50;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-menu li a:hover {
+            color: #6b9bff; /* 조금 더 진한 블루로 hover 효과 */
+        }
+
+        /* 메인 섹션 스타일 */
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .today-recipe, .popular-questions {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
+            border-radius: 2px;
+        }
+
+        /* 오늘의 레시피 카드 */
+        .recipe-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 2px solid #b3e5fc;
+        }
+
+        .recipe-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .recipe-card p {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #40c4ff, #6b9bff);
+            transform: scale(1.05);
+        }
+
+        /* 인기 질문 리스트 */
+        .question-list {
+            list-style: none;
+        }
+
+        .question-list li {
+            background-color: white;
+            padding: 1.2rem;
+            margin-bottom: 0.7rem;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            border: 1px solid #b3e5fc;
+        }
+
+        .question-list li:hover {
+            background-color: #f0f8ff;
+        }
+
+        .question-list li a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .question-list li a:hover {
+            color: #6b9bff;
+        }
+
+        .meta {
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .ad-box {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgb(140, 199, 255);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ad-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .ad-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.7rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .ad-box p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color : black;
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 섹션 -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">레시피 공유 웹</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html">홈</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#">레시피</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">레시피 모음</a></li>
+                        <li><a href="#">식재료 정보</a></li>
+                        <li><a href="#">조합 레시피</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#">커뮤니티</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">최신 질문</a></li>
+                        <li><a href="#">인기 질문</a></li>
+                        <li><a href="#">질문 작성</a></li>
+                        <li><a href="#">나만의 레시피</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#">FAQ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">요리 Q&A</a></li>
+                        <li><a href="#">기본 팁</a></li>
+                        <li><a href="#">사이트 이용법</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 메인 섹션 -->
+    <main>
+        <!-- 오늘의 레시피 -->
+        <section class="today-recipe">
+            <h2>오늘의 레시피</h2>
+            <div class="recipe-card">
+                <img src="https://via.placeholder.com/300x200" alt="오늘의 레시피 이미지">
+                <h3>간단한 김치볶음밥</h3>
+                <p>김치와 밥만 있으면 10분 안에 완성! 매콤한 맛이 일품인 김치볶음밥 레시피입니다.</p>
+                <a href="#" class="btn">레시피 보기</a>
+            </div>
+        </section>
+
+        <!-- 인기 질문 -->
+        <section class="popular-questions">
+            <h2>인기 질문</h2>
+            <ul class="question-list">
+                <li>
+                    <a href="#">집에서 피자 반죽 쉽게 만드는 법 아시는 분?</a>
+                    <span class="meta">조회수: 1,200 | 좋아요: 150</span>
+                </li>
+                <li>
+                    <a href="#">고기가 질길 때 해결 방법은?</a>
+                    <span class="meta">조회수: 980 | 좋아요: 120</span>
+                </li>
+                <li>
+                    <a href="#">베이킹 초보인데 오븐 온도 조절 팁 알려주세요</a>
+                    <span class="meta">조회수: 750 | 좋아요: 90</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- 푸터 섹션 -->
+    <footer>
+        <div class="ad-box">
+            <h3>당신의 레시피를 알려주세요!</h3>
+            <p>나만의 특별한 레시피를 공유하여 모두와 함께 맛있는 요리를 즐겨보세요.</p>
+            <a href="#" class="btn">지금 공유하기</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
