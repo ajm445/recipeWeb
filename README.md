@@ -3,7 +3,7 @@
 ```
 git clone https://github.com/ajm445/recipeWeb
 ```
-
+```
 홈
 음식 및 레시피
 ├── 레시피 모음
@@ -23,3 +23,4 @@ FAQ
 ├── 내 활동
 ├── 프로필 관리
 └── 설정
+```
