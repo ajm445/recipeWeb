@@ -185,13 +185,13 @@
         transition: opacity 0.3s ease;
     }
 
-    header:hover .menu-container {
+    .index-page header:hover .menu-container {
         display: flex;
         opacity: 1;
     }
 
-    header:hover .logo,
-    header:hover .nav-menu {
+    
+    .index-page header:hover .nav-menu {
         opacity: 0;
     }
 
