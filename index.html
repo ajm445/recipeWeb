@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>레시피 공유 웹 - 홈</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
         body {
-            background-color: #e6f0fa; /* 연한 블루-화이트 배경 유지 */
+            background-color: #e6f0fa;
         }
 
         /* 헤더 스타일 */
         header {
-            background: linear-gradient(90deg, #6b9bff, #40c4ff); /* 조금 더 진한 블루 그라디언트 */
-            padding: 1rem 0;
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: 60px;
         }
 
         .navbar {
@@ -33,6 +34,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem;
+            height: 100%;
+        }
+
+        .hamburger {
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none; /* 데스크톱에서는 숨김 */
         }
 
         .logo {
@@ -40,16 +50,14 @@
             font-size: 1.8rem;
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease;
         }
 
         .nav-menu {
             list-style: none;
             display: flex;
             gap: 2rem;
-        }
-
-        .nav-item {
-            position: relative;
+            transition: opacity 0.3s ease;
         }
 
         .nav-item a {
@@ -60,39 +68,97 @@
         }
 
         .nav-item a:hover {
-            color: #fff3cd; /* 부드러운 크림색으로 hover 효과 유지 */
+            color: #fff3cd;
         }
 
-        /* 드롭다운 메뉴 스타일 */
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
+        /* 메뉴 컨테이너 스타일 */
+        .menu-container {
             background-color: #ffffff;
-            list-style: none;
-            min-width: 150px;
-            border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border: 1px solid #b3e5fc;
+            z-index: 99;
+            display: none; /* 기본적으로 숨김 */
         }
 
-        .dropdown:hover .dropdown-menu {
-            display: block;
+        /* 데스크톱 호버 스타일 */
+        @media (min-width: 769px) {
+            .menu-container {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                max-width: 1200px;
+                width: 100%;
+                border-radius: 0 0 8px 8px;
+                padding: 1rem;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            header:hover .menu-container {
+                display: flex;
+                opacity: 1;
+            }
+
+            header:hover .logo,
+            header:hover .nav-menu {
+                opacity: 0; /* 헤더 내용 사라짐 */
+            }
         }
 
-        .dropdown-menu li {
-            padding: 0.7rem 1rem;
+        /* 모바일 슬라이드 스타일 */
+        @media (max-width: 768px) {
+            .menu-container {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100%;
+                padding: 2rem 1rem;
+                transition: left 0.3s ease;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-container.active {
+                left: 0;
+            }
         }
 
-        .dropdown-menu li a {
+        .menu-section {
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 769px) {
+            .menu-section {
+                flex: 1;
+                min-height: 150px;
+            }
+        }
+
+        .menu-section h4 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-section ul {
+            list-style: none;
+        }
+
+        .menu-section li {
+            padding: 0.5rem 0;
+        }
+
+        .menu-section li a {
             color: #2c3e50;
             font-size: 0.9rem;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .dropdown-menu li a:hover {
-            color: #6b9bff; /* 조금 더 진한 블루로 hover 효과 */
+        .menu-section li a:hover {
+            color: #6b9bff;
         }
 
         /* 메인 섹션 스타일 */
@@ -242,7 +308,132 @@
         .ad-box p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
-            color : black;
+            color: black;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 100;
+        }
+
+        .home-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-icon a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .nav-item a {
+                font-size: 1rem;
+            }
+
+            .recipe-card {
+                padding: 1.5rem;
+            }
+
+            .ad-box {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block; /* 모바일에서 햄버거 아이콘 표시 */
+            }
+
+            .nav-menu {
+                display: none; /* 모바일에서 기본 메뉴 숨김 */
+            }
+
+            .logo {
+                margin-left: 1rem;
+            }
+
+            .recipe-card img {
+                max-width: 80%;
+            }
+
+            .question-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .meta {
+                font-size: 0.8rem;
+            }
+
+            .home-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .recipe-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .recipe-card p {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .ad-box h3 {
+                font-size: 1.5rem;
+            }
+
+            .ad-box p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -250,42 +441,57 @@
     <!-- 헤더 섹션 -->
     <header>
         <nav class="navbar">
+            <i class="fas fa-bars hamburger"></i>
             <div class="logo">레시피 공유 웹</div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html">홈</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#">레시피</a>
-                    <ul class="dropdown-menu">
+                <li class="nav-item"><a href="#">레시피</a></li>
+                <li class="nav-item"><a href="#">커뮤니티</a></li>
+                <li class="nav-item"><a href="#">FAQ</a></li>
+                <li class="nav-item"><a href="#">마이페이지</a></li>
+            </ul>
+            <!-- 메뉴 컨테이너 -->
+            <div class="menu-container">
+                <div class="menu-section">
+                    <h4>레시피</h4>
+                    <ul>
                         <li><a href="#">레시피 모음</a></li>
                         <li><a href="#">식재료 정보</a></li>
                         <li><a href="#">조합 레시피</a></li>
                     </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#">커뮤니티</a>
-                    <ul class="dropdown-menu">
+                </div>
+                <div class="menu-section">
+                    <h4>커뮤니티</h4>
+                    <ul>
                         <li><a href="#">최신 질문</a></li>
                         <li><a href="#">인기 질문</a></li>
                         <li><a href="#">질문 작성</a></li>
                         <li><a href="#">나만의 레시피</a></li>
                     </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#">FAQ</a>
-                    <ul class="dropdown-menu">
+                </div>
+                <div class="menu-section">
+                    <h4>FAQ</h4>
+                    <ul>
                         <li><a href="#">요리 Q&A</a></li>
                         <li><a href="#">기본 팁</a></li>
                         <li><a href="#">사이트 이용법</a></li>
                     </ul>
-                </li>
-                <li class="nav-item"><a href="#">마이페이지</a></li>
-            </ul>
+                </div>
+                <div class="menu-section">
+                    <h4>마이페이지</h4>
+                    <ul>
+                        <li><a href="#">프로필 관리</a></li>
+                        <li><a href="#">내 저장 레시피</a></li>
+                        <li><a href="#">내 활동</a></li>
+                        <li><a href="#">설정</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
     <!-- 메인 섹션 -->
     <main>
-        <!-- 오늘의 레시피 -->
         <section class="today-recipe">
             <h2>오늘의 레시피</h2>
             <div class="recipe-card">
@@ -296,7 +502,6 @@
             </div>
         </section>
 
-        <!-- 인기 질문 -->
         <section class="popular-questions">
             <h2>인기 질문</h2>
             <ul class="question-list">
@@ -325,6 +530,28 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- 홈 아이콘 추가 -->
+    <div class="home-icon">
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+    </div>
+
+    <!-- JavaScript 추가 -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const menuContainer = document.querySelector('.menu-container');
+
+        hamburger.addEventListener('click', () => {
+            menuContainer.classList.toggle('active');
+        });
+
+        // 메뉴 외부 클릭 시 닫기
+        document.addEventListener('click', (event) => {
+            if (!menuContainer.contains(event.target) && !hamburger.contains(event.target)) {
+                menuContainer.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
