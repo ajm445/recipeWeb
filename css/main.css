@@ -1,7 +1,7 @@
 /* 메인 콘텐츠 스타일 */
 main {
     max-width: 1200px;
-    margin: 3rem auto 3rem calc(200px + 2rem);
+    margin: 3rem auto;
     padding: 0 1rem;
 }
 
