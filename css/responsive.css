@@ -1,0 +1,202 @@
+/* 반응형 디자인 */
+
+/* 1024px 이하 */
+@media (max-width: 1024px) {
+    main {
+        margin-left: calc(200px + 1rem);
+    }
+
+    footer {
+        margin-left: calc(200px + 1rem);
+    }
+
+    .recipe-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-menu {
+        gap: 1rem;
+    }
+
+    .nav-item {
+        font-size: 1rem;
+    }
+
+    .recipe-card {
+        padding: 1.5rem;
+    }
+
+    .ad-box {
+        padding: 1.5rem;
+    }
+}
+
+/* 768px 이하 */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        order: 1;
+    }
+
+    .logo {
+        margin-left: auto;
+        order: 2;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .sidebar {
+        width: 160px;
+        transform: translateX(-160px);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    main {
+        margin: 3rem 1rem;
+    }
+
+    footer {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    .recipe-card img {
+        max-width: 80%;
+    }
+
+    .question-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .meta {
+        font-size: 0.8rem;
+    }
+
+    .home-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    /* index.html의 메뉴 컨테이너 */
+    .menu-container {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        padding: 2rem 1rem;
+        transition: left 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu-container.active {
+        left: 0;
+    }
+}
+
+/* 480px 이하 */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .sidebar {
+        width: 140px;
+        transform: translateX(-140px);
+    }
+
+    .sidebar h3 {
+        font-size: 1.2rem;
+    }
+
+    .sidebar > ul > li > a {
+        font-size: 0.9rem;
+    }
+
+    .sidebar .sub-menu li a {
+        font-size: 0.8rem;
+    }
+
+    .recipe-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .recipe-card p {
+        font-size: 0.8rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .home-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .ad-box h3 {
+        font-size: 1.5rem;
+    }
+
+    .ad-box p {
+        font-size: 0.9rem;
+    }
+}
+
+/* index.html의 데스크톱 호버 스타일 */
+@media (min-width: 769px) {
+    .menu-container {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 1200px;
+        width: 100%;
+        border-radius: 0 0 8px 8px;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    header:hover .menu-container {
+        display: flex;
+        opacity: 1;
+    }
+
+    header:hover .logo,
+    header:hover .nav-menu {
+        opacity: 0;
+    }
+
+    .menu-section {
+        flex: 1;
+        min-height: 150px;
+    }
+}
