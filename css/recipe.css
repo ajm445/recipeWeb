@@ -1,0 +1,29 @@
+/* recipe.html 전용 스타일 */
+.recipe-page main {
+    margin-left: 250px; /* 사이드바 너비 */
+    max-width: calc(1200px - 250px); /* 전체 너비에서 사이드바 제외 */
+    margin-right: auto;
+    padding: 0 1rem;
+}
+
+.recipe-page footer {
+    margin-left: 250px;
+    max-width: calc(1200px - 250px);
+    margin-right: auto;
+    padding: 3rem 0;
+}
+
+.recipe-page footer .license-section {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 반응형: 모바일에서는 사이드바가 없으므로 전체 너비 사용 */
+@media (max-width: 768px) {
+    .recipe-page main,
+    .recipe-page footer {
+        margin-left: 0;
+        max-width: 100%;
+    }
+}
