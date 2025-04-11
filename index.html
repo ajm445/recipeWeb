@@ -17,6 +17,10 @@
 
         body {
             background-color: #e6f0fa;
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none
         }
 
         /* 헤더 스타일 */
@@ -61,14 +65,14 @@
             transition: opacity 0.3s ease;
         }
 
-        .nav-item a {
+        .nav-item {
             color: white;
             text-decoration: none;
             font-size: 1.1rem;
             transition: color 0.3s ease;
         }
 
-        .nav-item a:hover {
+        .nav-item:hover {
             color: #fff3cd;
         }
 
@@ -383,7 +387,7 @@
                 gap: 1rem;
             }
 
-            .nav-item a {
+            .nav-item {
                 font-size: 1rem;
             }
 
@@ -469,11 +473,11 @@
             <i class="fas fa-bars hamburger"></i>
             <div class="logo">다 - 잇(eat)다</div>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html">홈</a></li>
-                <li class="nav-item"><a href="#">레시피</a></li>
-                <li class="nav-item"><a href="#">커뮤니티</a></li>
-                <li class="nav-item"><a href="#">FAQ</a></li>
-                <li class="nav-item"><a href="#">마이페이지</a></li>
+                <li class="nav-item">홈</li>
+                <li class="nav-item">레시피</li>
+                <li class="nav-item">커뮤니티</li>
+                <li class="nav-item">FAQ</li>
+                <li class="nav-item">마이페이지</li>
             </ul>
             <!-- 메뉴 컨테이너 -->
             <div class="menu-container">

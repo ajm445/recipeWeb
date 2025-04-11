@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피 - 다 - 잇(eat)다</title>
+    <link rel="foodbook icon" type="image/x-icon" href="tab-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        body {
+            background-color: #e6f0fa;
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none
+        }
+
+        /* 헤더 스타일 */
+        header {
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: 60px;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            height: 100%;
+        }
+
+        .hamburger {
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin-left: auto;
+        }
+
+        .nav-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item a:hover {
+            color: #fff3cd;
+        }
+
+        /* 사이드 내비게이션 바 */
+        .sidebar {
+            background-color: #ffffff;
+            width: 200px;
+            height: calc(100vh - 60px);
+            position: fixed;
+            top: 60px;
+            left: 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1rem;
+            z-index: 99;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar h3 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar > ul > li {
+            margin-bottom: 1rem;
+        }
+
+        .sidebar > ul > li > a {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar > ul > li > a:hover {
+            background-color: #f0f8ff;
+            color: #6b9bff;
+            border-radius: 5px;
+        }
+
+        .sidebar .sub-menu {
+            padding-left: 1.5rem;
+            display: none;
+        }
+
+        .sidebar .sub-menu.active {
+            display: block;
+        }
+
+        .sidebar .sub-menu li {
+            margin: 0.5rem 0;
+        }
+
+        .sidebar .sub-menu li a {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar .sub-menu li a:hover {
+            color: #6b9bff;
+        }
+
+        /* 메인 콘텐츠 */
+        main {
+            max-width: 1200px;
+            margin: 3rem auto 3rem calc(200px + 2rem);
+            padding: 0 1rem;
+        }
+
+        .recipe-section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
+            border-radius: 2px;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .recipe-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 2px solid #b3e5fc;
+        }
+
+        .recipe-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .recipe-card p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #40c4ff, #6b9bff);
+            transform: scale(1.05);
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-left: calc(200px + 2rem);
+            max-width: 1200px;
+        }
+
+        .license-section {
+            padding: 1rem;
+        }
+
+        .license-section p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .license-section a {
+            color: #fff3cd;
+            text-decoration: none;
+        }
+
+        .license-section a:hover {
+            color: #b3e5fc;
+            text-decoration: underline;
+        }
+
+        /* 홈 아이콘 스타일 */
+        .home-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(90deg, #6b9bff, #40c4ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+        }
+
+        .home-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-icon a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 1024px) {
+            main {
+                margin-left: calc(200px + 1rem);
+            }
+
+            footer {
+                margin-left: calc(200px + 1rem);
+            }
+
+            .recipe-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                order: 1; /* 왼쪽 끝으로 고정 */
+            }
+
+            .logo {
+                margin-left: auto; /* 오른쪽 끝으로 이동 */
+                order: 2; /* 햄버거 뒤로 배치 */
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .navbar {
+                justify-content: space-between; /* 햄버거와 로고 사이 간격 최대화 */
+            }
+
+            .sidebar {
+                width: 160px;
+                transform: translateX(-160px);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            main {
+                margin: 3rem 1rem;
+            }
+
+            footer {
+                margin-left: 0;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .sidebar {
+                width: 140px;
+                transform: translateX(-140px);
+            }
+
+            .sidebar h3 {
+                font-size: 1.2rem;
+            }
+
+            .sidebar > ul > li > a {
+                font-size: 0.9rem;
+            }
+
+            .sidebar .sub-menu li a {
+                font-size: 0.8rem;
+            }
+
+            .recipe-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .recipe-card p {
+                font-size: 0.8rem;
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .home-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 섹션 -->
+    <header>
+        <nav class="navbar">
+            <i class="fas fa-bars hamburger"></i>
+            <div class="logo">다 - 잇(eat)다</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html">홈</a></li>
+                <li class="nav-item"><a href="recipe.html">레시피</a></li>
+                <li class="nav-item"><a href="#">커뮤니티</a></li>
+                <li class="nav-item"><a href="#">FAQ</a></li>
+                <li class="nav-item"><a href="#">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 사이드 내비게이션 바 -->
+    <aside class="sidebar">
+        <h3>레시피</h3>
+        <ul>
+            <li>
+                <a href="#" class="menu-toggle">레시피 모음</a>
+                <ul class="sub-menu">
+                    <li><a href="#">종류</a></li>
+                    <li><a href="#">대표 레시피</a></li>
+                    <li><a href="#">인기 레시피</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="menu-toggle">식재료 정보</a>
+                <ul class="sub-menu">
+                    <li><a href="#">구성재료</a></li>
+                    <li><a href="#">알레르기 성분</a></li>
+                    <li><a href="#">주의사항</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="menu-toggle">조합 레시피</a>
+                <ul class="sub-menu">
+                    <li><a href="#">간단 조합</a></li>
+                    <li><a href="#">창의적 조합</a></li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- 메인 섹션 -->
+    <main>
+        <section class="recipe-section">
+            <h2>레시피 모음</h2>
+            <div class="recipe-grid">
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/200x150" alt="김치볶음밥 이미지">
+                    <h3>김치볶음밥</h3>
+                    <p>매콤한 김치와 고소한 참기름으로 간단하게 만드는 볶음밥.</p>
+                    <a href="#" class="btn">자세히 보기</a>
+                </div>
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/200x150" alt="된장찌개 이미지">
+                    <h3>된장찌개</h3>
+                    <p>깊은 감칠맛의 된장으로 끓여낸 한국식 찌개.</p>
+                    <a href="#" class="btn">자세히 보기</a>
+                </div>
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/200x150" alt="불고기 이미지">
+                    <h3>불고기</h3>
+                    <p>달콤짭짤한 양념에 재운 소고기 요리.</p>
+                    <a href="#" class="btn">자세히 보기</a>
+                </div>
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/200x150" alt="잡채 이미지">
+                    <h3>잡채</h3>
+                    <p>당면과 채소, 고기를 간장으로 볶아낸 전통 요리.</p>
+                    <a href="#" class="btn">자세히 보기</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 섹션 -->
+    <footer>
+        <div class="license-section">
+            <p>
+                © 2025 다 - 잇(eat)다. All rights reserved.<br>
+                이 프로젝트는 <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT 라이센스</a>에 따라 배포됩니다.<br>
+                <a href="https://www.flaticon.com/kr/free-icon/eat_5451528" title="먹다 아이콘">탭 아이콘 제작자: IconKanan - Flaticon</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- 홈 아이콘 -->
+    <div class="home-icon">
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 사이드바 메뉴 토글
+        const menuToggles = document.querySelectorAll('.menu-toggle');
+        menuToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const subMenu = toggle.nextElementSibling;
+                subMenu.classList.toggle('active');
+            });
+        });
+
+        // 모바일 사이드바 토글
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // 외부 클릭 시 사이드바 닫기
+        document.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
