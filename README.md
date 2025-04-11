@@ -68,7 +68,7 @@ recipeWeb/​
 │   │   ├── tab-icon.png
 │   │   └── ...​
 │   └── fonts/​
-│       ├── nanum-gothic-bold.woff2​
+│       ├── ...
 │       └── ...​
 ├── css/                // 스타일시트​
 │   ├── ...       // 전역 스타일​
