@@ -56,3 +56,108 @@ FAQ : 요리 Q&A, 요리 기본 팁, 사이트 이용법
 
 커뮤니티에 나만의 레시피를 올려 스크랩이나 좋아요 수가 제일 많은 사람에게 레시피 목록에 자신의 레시피를 올릴 수 있게 해준다
 ```
+
+
+#### 프로젝트 구조도
+
+recipeWeb/​
+
+├── index.html​
+
+├── assets/             // 정적 자원 (이미지, 폰트 등)​
+
+│   ├── img/​
+
+│   │   ├── tab-icon.png
+
+│   │   └── ...​
+
+│   └── fonts/​
+
+│       ├── nanum-gothic-bold.woff2​
+
+│       └── ...​
+
+├── css/                // 스타일시트​
+
+│   ├── style.css       // 전역 스타일​
+
+│   ├── components/     // UI 컴포넌트별 스타일​
+
+│   │   ├── button.css​
+
+│   │   ├── modal.css​
+
+│   │   └── ...​
+
+│   └── utils/          // 스타일 유틸리티 (reset, variables 등)​
+
+│       ├── reset.css​
+
+│       └── variables.css​
+
+├── js/                 // JavaScript 코드​
+
+│   ├── app.js          // 메인 애플리케이션 로직 (초기화, 라우팅 - 간단한 경우)​
+
+│   ├── core/           // 핵심 로직 (데이터 모델 - 클라이언트 사이드, 유틸리티 등)​
+
+│   │   ├── models/       // 데이터 모델 정의 (클라이언트 사이드)​
+
+│   │   │   └── task.js​
+
+│   │   └── utils/        // JavaScript 유틸리티 함수​
+
+│   │       └── helpers.js​
+
+│   ├── ui/             // 사용자 인터페이스 관련 스크립트​
+
+│   │   ├── components/   // 재사용 가능한 UI 컴포넌트 로직​
+
+│   │   │   ├── task-list.js​
+
+│   │   │   ├── task-form.js​
+
+│   │   │   └── ...​
+
+│   │   ├── layouts/      // 페이지 레이아웃 관련 스크립트 (선택 사항)​
+
+│   │   │   └── main-layout.js​
+
+│   │   └── handlers/     // UI 이벤트 처리 로직​
+
+│   │       ├── task-list-handlers.js​
+
+│   │       ├── task-form-handlers.js​
+
+│   │       └── ...​
+
+├── libs/               // 외부 라이브러리 (직접 관리하는 경우)​
+
+│   ├── jquery/​
+
+│   │   └── jquery-3.7.0.min.js​
+
+│   ├── bootstrap/​
+
+│   │   ├── css/​
+
+│   │   │   └── bootstrap.min.css​
+
+│   │   └── js/​
+
+│   │       └── bootstrap.bundle.min.js​
+
+│   └── ...             // 기타 라이브러리​
+
+├── data/               // 임시 데이터 또는 JSON 데이터 파일 (선택 사항)​
+
+│   └── initial-tasks.json​
+
+├── tests/              // 테스트 코드 (선택 사항)​
+
+│   ├── core/​
+
+│   └── ui/​
+
+└── README.md​
