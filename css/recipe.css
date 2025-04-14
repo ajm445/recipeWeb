@@ -1,154 +1,29 @@
 /* recipe.html 전용 스타일 */
 .recipe-page main {
     margin-left: 250px; /* 사이드바 너비 */
-    max-width: calc(100% - 270px); /* 전체 너비에서 사이드바와 약간의 여백 제외 */
-    margin-right: 1rem; /* 오른쪽 여백 */
-    padding: 0 1.5rem; /* 좌우 패딩 증가 */
-    box-sizing: border-box;
-    transition: margin-left 0.3s ease, max-width 0.3s ease; /* 부드러운 전환 */
+    max-width: calc(1200px - 250px); /* 전체 너비에서 사이드바 제외 */
+    margin-right: auto;
+    padding: 0 1rem;
 }
 
 .recipe-page footer {
     margin-left: 250px;
-    max-width: calc(100% - 270px);
-    margin-right: 1rem;
-    padding: 2rem 1.5rem; /* 패딩 조정 */
-    box-sizing: border-box;
-    transition: margin-left 0.3s ease, max-width 0.3s ease;
+    max-width: calc(1200px - 250px);
+    margin-right: auto;
+    padding: 3rem 0;
 }
 
 .recipe-page footer .license-section {
     max-width: 100%;
-    margin: 0 auto;
-    padding: 0 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* recipe-grid 최적화 */
-.recipe-page .recipe-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* 카드 크기 조정 */
-    gap: 2rem; /* 간격 증가 */
-}
-
-/* 반응형 디자인 */
-@media (max-width: 1024px) {
-    .recipe-page main {
-        margin-left: 220px; /* 사이드바 너비 축소 */
-        max-width: calc(100% - 240px);
-    }
-
-    .recipe-page footer {
-        margin-left: 220px;
-        max-width: calc(100% - 240px);
-    }
-
-    .recipe-page .recipe-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 1.5rem;
-    }
-}
-
-/* 768px 이하 */
+/* 반응형: 모바일에서는 사이드바가 없으므로 전체 너비 사용 */
 @media (max-width: 768px) {
-    /* 기존 스타일 유지 */
-    .hamburger {
-        display: block;
-        order: 1;
-    }
-
-    .logo {
-        margin-left: auto;
-        order: 2;
-    }
-
-    .nav-menu {
-        display: none;
-    }
-
-    .navbar {
-        justify-content: space-between;
-    }
-
-    .sidebar {
-        width: 200px;
-        transform: translateX(-200px);
-    }
-
-    .sidebar.active {
-        transform: translateX(0);
-    }
-
-    main {
-        margin: 2rem 1.5rem;
-        max-width: calc(100% - 3rem);
-        transition: margin 0.3s ease;
-    }
-
-    footer {
-        margin: 0 1.5rem;
-        max-width: calc(100% - 3rem);
-        padding: 2rem 0;
-        transition: margin 0.3s ease;
-    }
-
-    .recipe-grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .recipe-card img {
-        max-width: 90%;
-    }
-
-    .question-list li {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .meta {
-        font-size: 0.8rem;
-    }
-
-    .home-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .recipe-page main {
-        margin: 1.5rem 1rem;
-        max-width: calc(100% - 2rem);
-        padding: 0 1rem;
-    }
-
+    .recipe-page main,
     .recipe-page footer {
-        margin: 0 1rem;
-        max-width: calc(100% - 2rem);
-        padding: 1rem;
-    }
-
-    .recipe-page .recipe-grid {
-        grid-template-columns: 1fr; /* 단일 열로 전환 */
-        gap: 1rem;
-    }
-
-    .recipe-page .recipe-card {
-        padding: 1rem;
-    }
-
-    .recipe-page .recipe-card h3 {
-        font-size: 1.1rem;
-    }
-
-    .recipe-page .recipe-card p {
-        font-size: 0.85rem;
-    }
-
-    .recipe-page .btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
+        margin-left: 0;
+        max-width: 100%;
     }
 }
