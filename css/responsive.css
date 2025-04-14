@@ -10,6 +10,10 @@
         margin-left: calc(200px + 1rem);
     }
 
+    .index-content {
+        margin-left: 1rem;
+    }
+
     .recipe-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
@@ -69,7 +73,7 @@
     }
 
     main {
-        margin: 3rem 1rem;
+        margin: 1rem;
     }
 
     footer {
