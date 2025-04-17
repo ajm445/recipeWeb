@@ -1,0 +1,71 @@
+/* 사이드바 스타일 */
+.sidebar {
+    background-color: #ffffff;
+    width: 200px;
+    height: calc(100vh - 60px);
+    position: fixed;
+    top: 60px;
+
+    /* 변경된 위치 */
+    left: 13%;
+
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem 1rem;
+    z-index: 99;
+    transition: transform 0.3s ease;
+}
+
+.sidebar h3 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar > ul > li {
+    margin-bottom: 1rem;
+}
+
+.sidebar > ul > li > a {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sidebar > ul > li > a:hover {
+    background-color: #f0f8ff;
+    color: #6b9bff;
+    border-radius: 5px;
+}
+
+.sidebar .sub-menu {
+    padding-left: 1.5rem;
+    display: none;
+}
+
+.sidebar .sub-menu.active {
+    display: block;
+}
+
+.sidebar .sub-menu li {
+    margin: 0.5rem 0;
+}
+
+.sidebar .sub-menu li a {
+    color: #7f8c8d;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sidebar .sub-menu li a:hover {
+    color: #6b9bff;
+}
