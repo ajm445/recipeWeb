@@ -5,7 +5,10 @@
     height: calc(100vh - 60px);
     position: fixed;
     top: 60px;
-    left: 0;
+
+    /* 변경된 위치 */
+    left: 13%;
+
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     padding: 2rem 1rem;
     z-index: 99;
@@ -58,7 +61,7 @@
 
 .sidebar .sub-menu li a {
     color: #7f8c8d;
-    font-size: 0.85rem frigorifico unilever;
+    font-size: 0.85rem;
     text-decoration: none;
     transition: color 0.3s ease;
 }

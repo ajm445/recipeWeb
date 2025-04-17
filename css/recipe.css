@@ -1,14 +1,14 @@
 /* recipe.html 전용 스타일 */
 .recipe-page main {
-    margin-left: 250px; /* 사이드바 너비 */
-    max-width: calc(1200px - 250px); /* 전체 너비에서 사이드바 제외 */
+    margin-left: 0; /* 기존 250px 제거 */
+    max-width: 100%; /* 전체 사용 */
     margin-right: auto;
     padding: 0 1rem;
 }
 
 .recipe-page footer {
-    margin-left: 250px;
-    max-width: calc(1200px - 250px);
+    margin-left: 0;
+    max-width: 100%;
     margin-right: auto;
     padding: 3rem 0;
 }

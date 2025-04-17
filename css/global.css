@@ -12,4 +12,8 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
+    /* 추가된 중앙 정렬용 패딩 */
+    padding-left: 13%;
+    padding-right: 13%;
 }
