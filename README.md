@@ -17,7 +17,7 @@ git clone https://github.com/ajm445/recipeWeb
 └── 나만의 레시피
 FAQ
 ├── 요리 Q&A
-├── 기본 팁
+├── 식재료 Q&A
 └── 사이트 이용법
 마이페이지
 ├── 프로필 관리
