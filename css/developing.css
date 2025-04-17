@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f4ff;
+    text-align: center;
+  }
+
+  .container {
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 1rem;
+  }
+
+  .btn-home {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(90deg, #6b9bff, #40c4ff);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+  }
+
+  .btn-home:hover {
+    background: linear-gradient(90deg, #40c4ff, #6b9bff);
+  }
