@@ -1,0 +1,75 @@
+.ingredient-section {
+    margin-top: 3rem;
+  }
+  
+  .ingredient-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .ingredient-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    gap: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .ingredient-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 반전 배치 */
+  .ingredient-item.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .ingredient-image-box {
+    flex-shrink: 0;
+    width: 220px;
+    height: 150px;
+    background-color: #f0f8ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .ingredient-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .ingredient-info-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .ingredient-info-box h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+  }
+  
+  .ingredient-info-box p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .ingredient-info-box .btn {
+    width: fit-content;
+    padding: 0.5rem 1.2rem;
+  }
+  
