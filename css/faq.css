@@ -1,0 +1,66 @@
+/* FAQ 메인 스타일 */
+.faq-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  .faq-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .faq-intro h2 {
+    font-size: 2rem;
+    color: #003366;
+  }
+
+  .faq-intro h2::after {
+    display: none !important;
+    content: none;
+  }
+  
+  .faq-intro p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* FAQ 항목 섹션 */
+  .faq-section {
+    margin-bottom: 2rem;
+  }
+  
+  .faq-section h3 {
+    font-size: 1.3rem;
+    color: #004d99;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #cce5ff;
+    padding-bottom: 0.5rem;
+  }
+  
+  .faq-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .faq-list li {
+    margin-bottom: 1.5rem;
+    background-color: #f9f9f9;
+    border-left: 4px solid #3399ff;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+  
+  .faq-list li strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #222;
+  }
+  
+  .faq-list li p {
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+  }
+  

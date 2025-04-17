@@ -1,0 +1,85 @@
+/* 커뮤니티 인트로 */
+.community-intro {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #f2f6ff;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.community-intro h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #003366;
+}
+
+.community-intro h2::after {
+    display: none !important;
+    content: none;
+}
+
+.community-intro p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* 질문 목록 공통 스타일 */
+.question-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.question-list li {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.question-list li a {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #333;
+}
+
+.question-list li .meta {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.3rem;
+}
+
+/* 섹션 간 간격 */
+.latest-questions,
+.popular-posts,
+.ad-box {
+    margin: 2rem 0;
+}
+
+/* 광고 박스 스타일 */
+.ad-box {
+    background-color: #e0f7fa;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.ad-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #006064;
+}
+
+.ad-box p {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.ad-box .btn {
+    background-color: #00796b;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}

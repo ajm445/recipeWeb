@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
+<html lang="ko"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>잇(eat)다</title>
     <link rel="foodbook icon" type="image/x-icon" href="tab-icon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- CSS 파일 연결 -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
@@ -14,6 +12,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/home-icon.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/faq.css">
 </head>
 <body class="index-page">
     <!-- 헤더 섹션 -->
@@ -49,7 +48,7 @@
                 <div class="menu-section">
                     <h4>FAQ</h4>
                     <ul>
-                        <li><a href="faq.html">요리 Q&A</a></li>
+                        <li><a href="faq.html">요리 Q&amp;A</a></li>
                         <li><a href="#">기본 팁</a></li>
                         <li><a href="#">사이트 이용법</a></li>
                     </ul>
@@ -67,38 +66,57 @@
         </nav>
     </header>
 
-<!-- 메인 섹션 -->
-    <main>
-        <section class="recipe-section">
-            <h2>레시피 모음</h2>
-            <div class="recipe-grid">
-                <div class="recipe-card">
-                    <img src="https://via.placeholder.com/200x150" alt="김치볶음밥 이미지">
-                    <h3>김치볶음밥</h3>
-                    <p>매콤한 김치와 고소한 참기름으로 간단하게 만드는 볶음밥.</p>
-                    <a href="#" class="btn">자세히 보기</a>
-                </div>
-                <div class="recipe-card">
-                    <img src="https://via.placeholder.com/200x150" alt="된장찌개 이미지">
-                    <h3>된장찌개</h3>
-                    <p>깊은 감칠맛의 된장으로 끓여낸 한국식 찌개.</p>
-                    <a href="#" class="btn">자세히 보기</a>
-                </div>
-                <div class="recipe-card">
-                    <img src="https://via.placeholder.com/200x150" alt="불고기 이미지">
-                    <h3>불고기</h3>
-                    <p>달콤짭짤한 양념에 재운 소고기 요리.</p>
-                    <a href="#" class="btn">자세히 보기</a>
-                </div>
-                <div class="recipe-card">
-                    <img src="https://via.placeholder.com/200x150" alt="잡채 이미지">
-                    <h3>잡채</h3>
-                    <p>당면과 채소, 고기를 간장으로 볶아낸 전통 요리.</p>
-                    <a href="#" class="btn">자세히 보기</a>
-                </div>
-            </div>
-        </section>
-    </main>
+    <!-- 메인 섹션 -->
+    
+<main class="faq-content">
+    <section class="faq-intro">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+        <p>요리, 식재료, 사이트 이용과 관련된 자주 묻는 질문들을 모았습니다.</p>
+    </section>
+
+    <section class="faq-section">
+        <h3>요리 관련</h3>
+        <ul class="faq-list">
+            <li>
+                <strong>Q. 초보도 만들 수 있는 간단한 요리는 뭐가 있을까요?</strong>
+                <p>A. 김치볶음밥, 계란말이, 된장찌개 등 재료가 간단한 요리부터 시작해보세요.</p>
+            </li>
+            <li>
+                <strong>Q. 오븐 없이 베이킹 가능한가요?</strong>
+                <p>A. 에어프라이어나 프라이팬으로도 가능한 레시피가 있어요!</p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="faq-section">
+        <h3>식재료 관련</h3>
+        <ul class="faq-list">
+            <li>
+                <strong>Q. 유통기한 지난 계란은 먹어도 되나요?</strong>
+                <p>A. 물에 넣었을 때 가라앉으면 대부분은 괜찮지만, 냄새와 상태를 꼭 확인하세요.</p>
+            </li>
+            <li>
+                <strong>Q. 자주 쓰는 조미료 추천해주세요.</strong>
+                <p>A. 간장, 고추장, 된장, 설탕, 소금, 식초, 참기름은 기본입니다.</p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="faq-section">
+        <h3>사이트 이용</h3>
+        <ul class="faq-list">
+            <li>
+                <strong>Q. 질문을 작성하려면 로그인해야 하나요?</strong>
+                <p>A. 네, 모든 질문 및 댓글 기능은 로그인 후 이용 가능합니다.</p>
+            </li>
+            <li>
+                <strong>Q. 나만의 레시피는 어떻게 공유하나요?</strong>
+                <p>A. 마이페이지에서 '레시피 공유'를 선택해 내용을 작성하면 됩니다.</p>
+            </li>
+        </ul>
+    </section>
+</main>
+
 
     <!-- 푸터 섹션 -->
     <footer class="index-content">
@@ -106,7 +124,7 @@
             <p>
                 © 2025 다 - 잇(eat)다. All rights reserved.<br>
                 이 프로젝트는 <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT 라이센스</a>에 따라 배포됩니다.<br>
-                <a href="https://www.flaticon.com/kr/free-icon/eat_5451528?term=%EB%A8%B9%EB%8B%A4&page=1&position=5&origin=search&related_id=5451528" title="먹다 아이콘">탭 아이콘 제작자: IconKanan - Flaticon</a>
+                <a href="https://www.flaticon.com/kr/free-icon/eat_5451528?term=%EB%A8%B9%EB%8B%A4&amp;page=1&amp;position=5&amp;origin=search&amp;related_id=5451528" title="먹다 아이콘">탭 아이콘 제작자: IconKanan - Flaticon</a>
             </p>
         </div>
     </footer>
@@ -121,5 +139,5 @@
     <!-- JavaScript 파일 연결 -->
     <script src="js/common.js"></script>
     <script src="js/index.js"></script>
-</body>
-</html>
+
+</body></html>
