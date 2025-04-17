@@ -6,3 +6,16 @@ function closeMenuOnOutsideClick(menuElement, triggerElement) {
         }
     });
 }
+
+// 헤더 숨기기 on scroll
+let lastScrollY = window.scrollY;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > lastScrollY) {
+    header.classList.add("hide"); // 아래로 스크롤 → 숨김
+  } else {
+    header.classList.remove("hide"); // 위로 스크롤 → 다시 보이기
+  }
+  lastScrollY = window.scrollY;
+});
