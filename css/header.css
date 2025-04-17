@@ -77,6 +77,27 @@ header.hide {
     margin-bottom: 0.5rem;
 }
 
+/* h4를 감싼 링크 스타일 */
+.menu-section a > h4 {
+color: #2c3e50;
+text-decoration: none;
+margin-bottom: 0.5rem;
+display: inline-block;
+font-size: 1.2rem;
+transition: color 0.3s ease;
+}
+
+/* 마우스 호버 시 색상만 변화 */
+.menu-section a:hover > h4 {
+color: #6b9bff;
+}
+
+/* 혹시 밑줄이 들어간 ::after 제거 */
+.menu-section h4::after {
+content: none !important;
+display: none !important;
+}
+  
 .menu-section ul {
     list-style: none;
 }
